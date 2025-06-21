@@ -62,7 +62,7 @@ public class DraggableBlock : MonoBehaviour
 
         BoxCollider2D box = gameObject.AddComponent<BoxCollider2D>();
         box.offset = (Vector2)bounds.center;
-        box.size = (Vector2)bounds.size + Vector2.one * 0.5f;
+        box.size = (Vector2)bounds.size + Vector2.one * 3f;
     }
 
     void OnMouseDown()
