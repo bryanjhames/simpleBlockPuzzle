@@ -23,6 +23,7 @@ public class GameOverManager : MonoBehaviour
     public void ShowGameOverScreen(int finalScore, int highScore)
     {
         gameOverPanel.SetActive(true);
+        AudioManager.Instance.PlayGameOver();
         StartCoroutine(CountUpScore(finalScore, highScore));
     }
 

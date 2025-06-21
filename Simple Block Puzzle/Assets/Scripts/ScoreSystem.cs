@@ -14,6 +14,9 @@ public class ScoreSystem : MonoBehaviour
     public TMP_Text scoreText;
     public TMP_Text highScoreText;
 
+    public Image scoreProgressBar;
+
+
     private void Awake()
     {
         Instance = this;
@@ -53,8 +56,15 @@ public class ScoreSystem : MonoBehaviour
 
     public void UpdateUI()
     {
-        scoreText.text = $"Score: {score}";
-        highScoreText.text = $"High Score: {highScore}";
+        scoreText.text = $"{score}";
+        highScoreText.text = $"{highScore}";
+
+        // Progress Bar logic
+        float progress = 0f;
+        if (highScore > 0)
+            progress = Mathf.Clamp01((float)score / highScore);
+
+        scoreProgressBar.fillAmount = progress;
     }
 
     public int GetCurrentScore()

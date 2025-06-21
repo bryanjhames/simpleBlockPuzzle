@@ -43,45 +43,43 @@ public class BlockSpawner : MonoBehaviour
     {
         activeBlocks.Remove(block);
 
+        // After every placement, check if any remaining blocks still fit
         if (activeBlocks.Count > 0)
         {
             if (!HasAnyValidPlacement())
             {
                 Debug.Log("GAME OVER!");
-                AudioManager.Instance.PlayGameOver();
                 BoardPlacement.Instance.FillRemainingCellsAnimated(() =>
                 {
                     ScoreSystem.Instance.CheckHighScore();
-                   
                     gameOverManager.ShowGameOverScreen(
                         ScoreSystem.Instance.GetCurrentScore(),
                         ScoreSystem.Instance.GetHighScore()
                     );
                 });
-
-                return;
             }
         }
         else
         {
-            if (!BoardHasAnyValidPlacementForNextBlocks())
+            // All 3 blocks placed — generate new blocks
+            GenerateNewBlocks();
+
+            // After generating, check if new blocks can fit
+            if (!HasAnyValidPlacement())
             {
-                AudioManager.Instance.PlayGameOver();
+                Debug.Log("GAME OVER!");
                 BoardPlacement.Instance.FillRemainingCellsAnimated(() =>
                 {
                     ScoreSystem.Instance.CheckHighScore();
-                   
                     gameOverManager.ShowGameOverScreen(
                         ScoreSystem.Instance.GetCurrentScore(),
                         ScoreSystem.Instance.GetHighScore()
                     );
                 });
-                return;
             }
-
-            GenerateNewBlocks();
         }
     }
+
 
     public bool HasAnyValidPlacement()
     {
