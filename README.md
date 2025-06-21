@@ -73,7 +73,6 @@ A simple 2D block puzzle game built using **Unity**.
 - **/Prefabs**
   - Block prefab
   - Score popup prefab
-  - Clear effect prefab
 
 - **/ScriptableObjects**
   - BlockDataSO (defines each block's shape and sprite)
