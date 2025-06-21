@@ -85,7 +85,6 @@ A simple 2D block puzzle game built using **Unity**.
 
 ## 🔥 Future Improvements
 
-- Mobile touch support
 - More visual & particle effects
 - Theme variations
 - Sound and music improvements
